@@ -1,5 +1,23 @@
 # Student Attendance Record
 
+You are given a string s representing an attendance record for a student where each character signifies
+whether the student was absent, late, or present on that day. The record only contains the following three
+characters:
+ &#39;A&#39;: Absent.
+ &#39;L&#39;: Late.
+ &#39;P&#39;: Present.
+The student is eligible for an attendance award if they meet both of the following criteria:
+ The student was absent (&#39;A&#39;) for strictly fewer than 2 days total.
+ The student was never late (&#39;L&#39;) for 3 or more consecutive days.
+Return true if the student is eligible for an attendance award, or false otherwise.
+Example 1:
+Input: s = &quot;PPALLP&quot;
+Output: true
+Explanation: The student has fewer than 2 absences and was never late 3 or more consecutive days.
+Example 2:
+Input: s = &quot; PPALLL&quot;
+Output: false
+
 ## Business Model
 
 **Application Description:**
@@ -24,7 +42,7 @@ We avoid making assumptions about a student's eligibility. If the string is empt
 
 ### Code Approach
 
-**1. Solution using Loop:**
+**1. Solution using only one condition:**
 
 Although my initial approach to the task involved creating a loop with two conditions, I later decided to explore alternative solutions. The following is one of the solutions I considered:
 
@@ -41,4 +59,35 @@ def if_student_gets_award(self, s):
 
 Although the method appears concise and straightforward, it is anticipated to be less efficient due to multiple passes over the string and the associated memory operations. Performance testing with long strings exceeding 100 characters demonstrated higher execution times compared to the loop-based solution. Additionally, the loop-based approach is likely to be more readable and comprehensible for other team members. Consequently, I opted to retain the loop and condition-based approach. This method involves creating counters for 'A' and 'L' characters to evaluate eligibility criteria effectively.
 
+**2. Solution using loop:**
 
+In this solution, the if_student_gets_award method is designed to determine if a student is eligible for an attendance award based on their attendance record. The method processes the input string s to check two conditions: the student was absent fewer than 2 days in total, and the student was never late for 3 or more consecutive days.
+
+Steps:
+Convert to Uppercase:
+
+The input string s is converted to uppercase to ensure consistency and handle potential human error in data entry.
+Empty String Check:
+
+The method raises an EmptyStringException if the input string s is empty, as it cannot determine eligibility from an empty record.
+Invalid Character Check:
+
+The method raises an InvalidStringException if the input string contains any characters other than 'A', 'L', or 'P', ensuring data integrity.
+Initialize Counters:
+
+Two counters, absence_count and late_streak, are initialized to keep track of the number of absences and the streak of consecutive late days, respectively.
+Iterate Through Characters:
+
+The method iterates through each character in the string s:
+If the character is 'A', the absence count is incremented.
+If the character is 'L', the late streak is incremented. If the late streak exceeds 2, the method returns False.
+If the character is not 'L', the late streak is reset to 0.
+If the absence count exceeds 1, the method returns False.
+Return Result:
+
+If neither condition for ineligibility is met, the method returns True, indicating the student is eligible for the award.
+Benefits and Rationale:
+Robustness: The method includes checks for empty strings and invalid characters, ensuring robustness and data integrity.
+Readability: The code is structured and commented clearly, making it easy to understand and maintain.
+Efficiency: The use of counters for absences and late days ensures that the method processes the string in a single pass, making it efficient even for long strings.
+Error Handling: By raising exceptions for invalid input, the method ensures that only valid data is processed, preventing incorrect eligibility determinations.
