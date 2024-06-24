@@ -11,10 +11,9 @@ The business application is designed for teachers and students to check a studen
 
 ### Handling Various Cases:
 
-Although we have the condition "The record only contains the following three characters:",
-we still handle exceptions to ensure robustness in case of unexpected input or data corruption. Also we uppercase letters in case of human error.
+Although the condition states, "The record only contains the following three characters," we still handle exceptions to ensure robustness against unexpected input or data corruption. Additionally, we convert letters to uppercase to account for potential human error.
 
-We don't want to make assumptions about student's eligibility, so if we have empty string or symbols, we don't know if student meets creterias for award or not. Therefore, we need to make a data verification.
+We avoid making assumptions about a student's eligibility. If the string is empty or contains invalid symbols, we cannot determine if the student meets the criteria for the award. Therefore, we incorporate data verification to maintain accuracy and reliability.
 
 
 1. **Empty String**:
@@ -27,7 +26,7 @@ We don't want to make assumptions about student's eligibility, so if we have emp
 
 **1. Solution using Loop:**
 
-Although after first reading of the task, my first thought about solution was to make a loop with two conditions, but after some time I decided to move without it, so my first solutions is the next one:
+Although my initial approach to the task involved creating a loop with two conditions, I later decided to explore alternative solutions. The following is one of the solutions I considered:
 
 ```python
 
@@ -38,7 +37,8 @@ def if_student_gets_award(self, s):
             return False
 
         return True
+```
 
-Although the method looks short and simp[le, it expected to be slower due to multiple passes over the string and additional memory operations. Cheking long strings with more than 100 characters, the timing was higher than the one from loop solution, and loop solution could be easier readable and understandable for other team members. Therefore, I decided to keep the approach with loop and conditions. For 'A' and 'L' characters we create counters which we can check later for eligibility criteria. 
+Although the method appears concise and straightforward, it is anticipated to be less efficient due to multiple passes over the string and the associated memory operations. Performance testing with long strings exceeding 100 characters demonstrated higher execution times compared to the loop-based solution. Additionally, the loop-based approach is likely to be more readable and comprehensible for other team members. Consequently, I opted to retain the loop and condition-based approach. This method involves creating counters for 'A' and 'L' characters to evaluate eligibility criteria effectively.
 
 
