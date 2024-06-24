@@ -3,17 +3,19 @@
 You are given a string s representing an attendance record for a student where each character signifies
 whether the student was absent, late, or present on that day. The record only contains the following three
 characters:
- &#39;A&#39;: Absent.
- &#39;L&#39;: Late.
- &#39;P&#39;: Present.
+&#39;A&#39;: Absent.
+&#39;L&#39;: Late.
+&#39;P&#39;: Present.
 The student is eligible for an attendance award if they meet both of the following criteria:
- The student was absent (&#39;A&#39;) for strictly fewer than 2 days total.
- The student was never late (&#39;L&#39;) for 3 or more consecutive days.
+The student was absent (&#39;A&#39;) for strictly fewer than 2 days total.
+The student was never late (&#39;L&#39;) for 3 or more consecutive days.
 Return true if the student is eligible for an attendance award, or false otherwise.
+
 Example 1:
 Input: s = &quot;PPALLP&quot;
 Output: true
 Explanation: The student has fewer than 2 absences and was never late 3 or more consecutive days.
+
 Example 2:
 Input: s = &quot; PPALLL&quot;
 Output: false
